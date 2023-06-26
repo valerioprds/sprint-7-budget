@@ -1,0 +1,54 @@
+<form
+  [formGroup]="webForm"
+  class="panel rounded"
+  id="panel-id"
+  style="border: 3px solid blue"
+>
+  <label for="number-pages">Numero de Paginas</label> <br />
+  <button
+    type="button"
+    class="btn btn-warning"
+    (click)="reduceQuantityofPages()"
+  >
+    -
+  </button>
+  <input
+    class="ms-3"
+    type="number"
+    placeholder="numero de paginas"
+    formControlName="numberOfPages"
+  />
+  <button
+    type="button"
+    class="btn btn-success ms-3"
+    (click)="increaseQuantityofPages()"
+  >
+    +
+  </button>
+
+  <br />
+  <br />
+
+  <label for="number-languages">Numero de Lenguas</label>
+  <br />
+  <button
+    type="button"
+    class="btn btn-warning"
+    (click)="reduceQuantityofLanguages()"
+  >
+    -
+  </button>
+  <input
+    class="ms-3"
+    type="number"
+    placeholder="introduce numero de Lenguas"
+    formControlName="numberOfLanguages"
+  />
+  <button
+    type="button"
+    class="btn btn-success ms-3"
+    (click)="increaseQuantityofLanguages()"
+  >
+    +
+  </button>
+</form>

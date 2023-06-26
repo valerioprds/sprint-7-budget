@@ -1,0 +1,49 @@
+<!-- <div *ngIf="showComponent">
+  <app-panel></app-panel>
+</div> -->
+
+<form [formGroup]="checkboxForm" >
+  <p>¿Que quieres hacer?</p>
+  <ul class="list-unstyled">
+    <li>
+      <label for="webPage">
+        Hacer una página web (500 €)
+        <input type="checkbox" id="webPage" formControlName="checkedWebPage" />
+      </label>
+
+    </li>
+    <div *ngIf="checkboxForm.get('checkedWebPage')!.value">
+      <app-panel (totalCostSent)="receiveTotalCost($event)"></app-panel>
+
+    </div>
+
+
+
+    <li>
+      <label for="campaignSeo">
+        Hacer una campaña SEO (300 €)
+        <input
+          type="checkbox"
+          id="campaignSeo"
+          formControlName="checkedCampaingSeo"
+        />
+      </label>
+    </li>
+
+    <li>
+      <label for="adCampaign">
+        Hacer una campaña de publicidad (200 €)
+        <input
+          type="checkbox"
+          id="adCampaign"
+          formControlName="checkedCampaingAdvertisement"
+        />
+      </label>
+    </li>
+  </ul>
+
+  <p id="totalPrice">El Precio Total es:   {{ totalFinalPrice   }} €</p>
+
+  <button class="btn btn-primary" (click)="goBackHome()">Volver Atras</button>
+
+</form>
