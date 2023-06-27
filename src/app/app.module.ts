@@ -11,6 +11,7 @@ import { PanelComponent } from './panel/panel.component';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ModalComponent } from './modal/modal.component';
+import { PresupuestoListComponent } from './presupuesto-list/presupuesto-list.component';
 
 
 
@@ -20,7 +21,8 @@ import { ModalComponent } from './modal/modal.component';
     CheckboxComponent,
     PanelComponent,
     WelcomeComponent,
-    ModalComponent
+    ModalComponent,
+    PresupuestoListComponent
   ],
   imports: [
     BrowserModule,
