@@ -1,1 +1,31 @@
-<p>modal works!</p>
+
+
+<ng-template #contenido let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Titulo Modal</h4>
+    <button
+      class="close"
+      aria-label="close"
+      type="button"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="moodal-body">Indicar el numero de paginas</div>
+  <div class="modal-footer">
+    <button type="button" class="btn tbn-success" (click)="modal.close()">
+      OK
+    </button>
+  </div>
+</ng-template>
+
+<button type="button" class="btn tbn-danger" (click)="modal.open(contenido)">
+  info
+</button>
+<!-- <button type="button" class="btn tbn-danger" (click)="openLG(contenido)">
+  lanzar modal LG
+</button> -->
+<!-- <button type="button" class="btn tbn-danger" (click)="openXL(contenido)">
+  lanzar modal XL
+</button> -->

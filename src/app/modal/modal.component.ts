@@ -8,5 +8,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
+ constructor (public modal: NgbModal) {}
 
+
+ open(contenido: any){
+  this.modal.open(contenido)
+ }
 }
