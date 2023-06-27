@@ -8,27 +8,24 @@ export class BudgetCalculationService {
     return numberOfPages * numberOfLanguages * 30;
   }
 
-  agregarPresupuesto() {
 
-  }
+}
 
-
-
-
-  }
-
-  export class PresupuestoService {
+export class PresupuestoService {
   presupuestos: any[] = []; // Array para almacenar los presupuestos
 
-  constructor() { }
+  constructor() {}
 
-
-  agregarPresupuesto(nombre: string, cliente: string, servicio: string, precio: number) {
+  agregarPresupuesto(
+    nombre: string,
+    cliente: string,
+    precio: number
+  ) {
     const nuevoPresupuesto = {
       nombre: nombre,
       cliente: cliente,
-      servicio: servicio,
-      precio: precio
+      
+      precio: precio,
     };
 
     this.presupuestos.push(nuevoPresupuesto);
@@ -40,7 +37,3 @@ export class BudgetCalculationService {
     // para notificar a otros componentes que se ha agregado un nuevo presupuesto
   }
 }
-
-
-
-

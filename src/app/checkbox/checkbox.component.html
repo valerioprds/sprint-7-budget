@@ -1,66 +1,75 @@
 <form [formGroup]="checkboxForm">
-<div class="main-content">
-  <p>¿Que quieres hacer?</p>
-  <ul class="list-unstyled">
-    <li>
-      <label for="webPage">
-        Hacer una página web (500 €)
-        <input type="checkbox" id="webPage" formControlName="checkedWebPage" />
-      </label>
-    </li>
-    <div *ngIf="checkboxForm.get('checkedWebPage')!.value">
-      <app-panel (totalCostSent)="receiveTotalCost($event)"></app-panel>
-    </div>
+  <div class="main-content">
+    <p>¿Que quieres hacer?</p>
+    <ul class="list-unstyled">
+      <li>
+        <label for="webPage">
+          Hacer una página web (500 €)
+          <input
+            type="checkbox"
+            id="webPage"
+            formControlName="checkedWebPage"
+          />
+        </label>
+      </li>
+      <div *ngIf="checkboxForm.get('checkedWebPage')!.value">
+        <app-panel (totalCostSent)="receiveTotalCost($event)"></app-panel>
+      </div>
 
-    <li>
-      <label for="campaignSeo">
-        Hacer una campaña SEO (300 €)
-        <input
-          type="checkbox"
-          id="campaignSeo"
-          formControlName="checkedCampaingSeo"
-        />
-      </label>
-    </li>
+      <li>
+        <label for="campaignSeo">
+          Hacer una campaña SEO (300 €)
+          <input
+            type="checkbox"
+            id="campaignSeo"
+            formControlName="checkedCampaingSeo"
+          />
+        </label>
+      </li>
 
-    <li>
-      <label for="adCampaign">
-        Hacer una campaña de publicidad (200 €)
-        <input
-          type="checkbox"
-          id="adCampaign"
-          formControlName="checkedCampaingAdvertisement"
-        />
-      </label>
-    </li>
-  </ul>
+      <li>
+        <label for="adCampaign">
+          Hacer una campaña de publicidad (200 €)
+          <input
+            type="checkbox"
+            id="adCampaign"
+            formControlName="checkedCampaingAdvertisement"
+          />
+        </label>
+      </li>
+    </ul>
 
-  <p id="totalPrice">El Precio Total es: {{ totalFinalPrice }} €</p>
-  <br>
-  <button class="btn btn-primary" (click)="goBackHome()">Volver Atras</button>
-</div>
+    <p id="totalPrice">El Precio Total es: {{ totalFinalPrice }} €</p>
+    <br />
+    <button class="btn btn-primary" (click)="goBackHome()">Volver Atras</button>
+  </div>
   <!-- <app-presupuesto-list></app-presupuesto-list> -->
-<!-- **********  Form para pedir presupuestos********* -->
-<aside class="side-bar">
-<div class="presupuesto-container">
-  <div>
-    <label for="nombrePresupuesto">Nombre de presupuesto:</label>
-    <input type="text" id="nombrePresupuesto" formControlName="nombrePresupuesto">
+  <!-- **********  Form para pedir presupuestos********* -->
+  <aside class="side-bar">
+    <div class="presupuesto-container">
+      <div>
+        <label for="nombrePresupuesto">Nombre de presupuesto:</label>
+        <input
+          type="text"
+          id="nombrePresupuesto"
+          formControlName="nombrePresupuesto"
+        />
+      </div>
 
-  </div>
+      <div>
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" formControlName="cliente" />
+      </div>
+      <br />
 
-  <div>
-    <label for="cliente">Cliente:</label>
-    <input type="text" id="cliente" formControlName="cliente">
-
-  </div>
-  <br>
-
-  <button type="submit" [disabled]="checkboxForm.invalid">Guardar</button>
-</div>
-</aside>
-
+      <button type="submit" [disabled]="checkboxForm.invalid">Guardar</button>
+      <br><br>
+       <div *ngFor="let presupuesto of presupuestoService.presupuestos">
+        <p>Nombre: {{ presupuesto.nombre }}</p>
+        <p>Cliente: {{ presupuesto.cliente }}</p>
+        <p>Servicio: {{ presupuesto.servicio }}</p>
+        <p>Precio: {{ presupuesto.precio }}</p>
+      </div>
+    </div>
+  </aside>
 </form>
-
-
-

@@ -1,5 +1,5 @@
 import { PanelComponent } from '../panel/panel.component';
-import { Component,  Input } from '@angular/core'; //output y eventemitter
+import { Component, Input } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,6 +7,8 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { PresupuestoService } from '../Services/budgetCalculation.serivce';
 
 @Component({
   selector: 'app-checkbox',
@@ -18,52 +20,37 @@ export class CheckboxComponent {
   totalCostReceived: number = 0; // es del hijo
   totalFinalPrice: number = 0; // suma de padre + hijo  que se calcula en calculateTotalFinalPrice y lo llamamos en el HTML
 
-
-  //  Ejercicio 6 para crear un array de presupuestos
-
-
+  //  *Ejercicio 6 para crear un array de presupuestos
 
   calculateTotalFinalPrice() {
-    this.totalFinalPrice = this.totalCostReceived + this.totalPrice
-
+    this.totalFinalPrice = this.totalCostReceived + this.totalPrice;
   }
 
-
   receiveTotalCost(totalCost: number) {
-    this.totalCostReceived = totalCost
+    this.totalCostReceived = totalCost;
     //console.log('HE RECIBIDO ' + totalCost + ' ' + this.totalPrice);
-  this.calculateTotalFinalPrice()
+    this.calculateTotalFinalPrice();
     //totalCost es de panel , this.totalPrice es del checkbox (las 3 casillas)
   }
 
   checkboxForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router ,  public presupuestoService: PresupuestoService ) {
     this.checkboxForm = this.formBuilder.group({
       checkedWebPage: false,
       checkedCampaingSeo: false,
       checkedCampaingAdvertisement: false,
       nombrePresupuesto: ['', Validators.required],
-      cliente: ['', Validators.required]
+      cliente: ['', Validators.required],
     });
-
-
-
-
-
   }
-
-
-
-
 
   ngOnInit(): void {
     this.checkboxForm.valueChanges.subscribe(() => {
       this.calculateTotalPrice();
-      this.calculateTotalFinalPrice()
+      this.calculateTotalFinalPrice();
     });
   }
-
 
   goBackHome() {
     this.router.navigate(['']);
@@ -88,5 +75,12 @@ export class CheckboxComponent {
     //console.log(this.totalPrice);
   }
 
+  agregarPresupuesto() {
+    const nombre = this.checkboxForm.get('nombrePresupuesto')!.value
+    const cliente = this.checkboxForm.get('cliente')!.value
+    const precio = this.totalFinalPrice
 
+    this.presupuestoService.agregarPresupuesto(nombre,cliente,precio)
+  }
 }
+
