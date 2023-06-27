@@ -1,0 +1,11 @@
+.main-content {
+  /* Estilos para el contenido principal */
+  width: 70%; /* Ancho del contenido principal */
+  float: left; /* Flotar a la izquierda */
+}
+
+.sidebar {
+  /* Estilos para la barra lateral (aside) */
+  width: 30%; /* Ancho de la barra lateral */
+  float: right; /* Flotar a la derecha */
+}

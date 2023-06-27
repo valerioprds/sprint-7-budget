@@ -1,5 +1,5 @@
 <form [formGroup]="checkboxForm">
-  <app-presupuesto-list></app-presupuesto-list>
+<div class="main-content">
   <p>¿Que quieres hacer?</p>
   <ul class="list-unstyled">
     <li>
@@ -36,6 +36,31 @@
   </ul>
 
   <p id="totalPrice">El Precio Total es: {{ totalFinalPrice }} €</p>
-
+  <br>
   <button class="btn btn-primary" (click)="goBackHome()">Volver Atras</button>
+</div>
+  <!-- <app-presupuesto-list></app-presupuesto-list> -->
+<!-- **********  Form para pedir presupuestos********* -->
+<aside class="side-bar">
+<div class="presupuesto-container">
+  <div>
+    <label for="nombrePresupuesto">Nombre de presupuesto:</label>
+    <input type="text" id="nombrePresupuesto" formControlName="nombrePresupuesto">
+
+  </div>
+
+  <div>
+    <label for="cliente">Cliente:</label>
+    <input type="text" id="cliente" formControlName="cliente">
+
+  </div>
+  <br>
+
+  <button type="submit" [disabled]="checkboxForm.invalid">Guardar</button>
+</div>
+</aside>
+
 </form>
+
+
+

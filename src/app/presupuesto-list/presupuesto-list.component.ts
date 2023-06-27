@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-presupuesto-list',
@@ -17,10 +18,5 @@ export class PresupuestoListComponent implements OnInit {
     });
   }
 
-  savePresupuesto() {
-    if (this.form.valid) {
-      const nombrePresupuesto = this.form.value.nombre;
-      const cliente = this.form.value.cliente;
-    }
-  }
+
 }

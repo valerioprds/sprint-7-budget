@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="savePresupuesto()">
+ <form [formGroup]="form" >
   <div class="form-group">
     <label for="name-id">Nombre del presupuesto</label>
     <input type="text" formControlName="nombre" id="name-id" />
@@ -8,4 +8,6 @@
     <label for="customer-id">Nombre del Cliente</label>
     <input type="text" formControlName="cliente" id="customer-id" />
   </div>
+
+   <input type="submit" value="Generar Presupuesto">
 </form>

@@ -18,6 +18,11 @@ export class CheckboxComponent {
   totalCostReceived: number = 0; // es del hijo
   totalFinalPrice: number = 0; // suma de padre + hijo  que se calcula en calculateTotalFinalPrice y lo llamamos en el HTML
 
+
+  //  Ejercicio 6 para crear un array de presupuestos
+
+
+
   calculateTotalFinalPrice() {
     this.totalFinalPrice = this.totalCostReceived + this.totalPrice
 
@@ -26,7 +31,7 @@ export class CheckboxComponent {
 
   receiveTotalCost(totalCost: number) {
     this.totalCostReceived = totalCost
-    console.log('HE RECIBIDO ' + totalCost + ' ' + this.totalPrice);
+    //console.log('HE RECIBIDO ' + totalCost + ' ' + this.totalPrice);
   this.calculateTotalFinalPrice()
     //totalCost es de panel , this.totalPrice es del checkbox (las 3 casillas)
   }
@@ -38,8 +43,19 @@ export class CheckboxComponent {
       checkedWebPage: false,
       checkedCampaingSeo: false,
       checkedCampaingAdvertisement: false,
+      nombrePresupuesto: ['', Validators.required],
+      cliente: ['', Validators.required]
     });
+
+
+
+
+
   }
+
+
+
+
 
   ngOnInit(): void {
     this.checkboxForm.valueChanges.subscribe(() => {
@@ -69,6 +85,8 @@ export class CheckboxComponent {
       this.totalPrice += 200;
     }
 
-    console.log(this.totalPrice);
+    //console.log(this.totalPrice);
   }
+
+
 }

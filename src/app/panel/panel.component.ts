@@ -70,6 +70,6 @@ export class PanelComponent {
     );
     this.totalCostSent.emit(totalCost);
 
-    console.log('hola desde onsubmit' + totalCost);
+    //console.log('hola desde onsubmit' + totalCost);
   }
 }
