@@ -35,7 +35,11 @@ export class CheckboxComponent {
 
   checkboxForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router ,   public presupuestoService: PresupuestoService ) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public presupuestoService: PresupuestoService
+  ) {
     this.checkboxForm = this.formBuilder.group({
       checkedWebPage: false,
       checkedCampaingSeo: false,
@@ -76,11 +80,13 @@ export class CheckboxComponent {
   }
 
   agregarPresupuesto() {
-    const nombre = this.checkboxForm.get('nombrePresupuesto')!.value
-    const cliente = this.checkboxForm.get('cliente')!.value
-    const precio = this.totalFinalPrice
+    console.log('hola desde agregarPresupuesto');
+    const nombre = this.checkboxForm.get('nombrePresupuesto')!.value;
+    const cliente = this.checkboxForm.get('cliente')!.value;
+    const precio = this.totalFinalPrice;
 
-    this.presupuestoService.agregarPresupuesto(nombre,cliente,precio)
+    this.presupuestoService.agregarPresupuesto(nombre, cliente, precio);
+
+    this.checkboxForm.reset();
   }
 }
-

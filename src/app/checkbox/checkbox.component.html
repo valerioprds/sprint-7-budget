@@ -62,14 +62,14 @@
       </div>
       <br />
 
-      <button type="submit" [disabled]="checkboxForm.invalid">Guardar</button>
+      <button type="submit" [disabled]="checkboxForm.invalid" (click)="agregarPresupuesto()">Guardar</button>
       <br><br>
        <div *ngFor="let presupuesto of presupuestoService.presupuestos">
         <p>Nombre: {{ presupuesto.nombre }}</p>
         <p>Cliente: {{ presupuesto.cliente }}</p>
-        <p>Servicio: {{ presupuesto.servicio }}</p>
+        <!-- <p>Servicio: {{ presupuesto.servicio }}</p> -->
         <p>Precio: {{ presupuesto.precio }}</p>
-      </div> 
+      </div>
     </div>
   </aside>
 </form>
