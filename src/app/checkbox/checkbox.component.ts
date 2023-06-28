@@ -35,7 +35,7 @@ export class CheckboxComponent {
 
   checkboxForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router ,  public presupuestoService: PresupuestoService ) {
+  constructor(private formBuilder: FormBuilder, private router: Router ,   public presupuestoService: PresupuestoService ) {
     this.checkboxForm = this.formBuilder.group({
       checkedWebPage: false,
       checkedCampaingSeo: false,

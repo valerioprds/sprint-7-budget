@@ -1,3 +1,4 @@
+import { PresupuestoService } from './Services/budgetCalculation.serivce';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,7 +13,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ModalComponent } from './modal/modal.component';
 import { PresupuestoListComponent } from './presupuesto-list/presupuesto-list.component';
-
 
 
 @NgModule({
@@ -30,7 +30,7 @@ import { PresupuestoListComponent } from './presupuesto-list/presupuesto-list.co
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [PresupuestoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
