@@ -13,6 +13,9 @@ export class PresupuestoListComponent  {
   presupuestoForm: FormGroup;
   totalFinalPrice!: number
 
+  presupuestos : any[] = []
+
+
   orderByDate = false;
   orderByAlphabet = false;
 
@@ -49,22 +52,12 @@ export class PresupuestoListComponent  {
 
   }
 
-  ordenarPorFecha() {
-    this.presupuestoService.presupuestos.sort((a, b) => {
-      const fechaA = new Date(a.fecha);
-      const fechaB = new Date(b.fecha);
-      console.log(fechaA)
-      console.log(fechaB)
-      return fechaA.getTime() - fechaB.getTime();
-    });
-    this.orderByAlphabet = false;
-    this.orderByDate = true;
-  }
+
 
 
 
   agregarPresupuesto() {
-    console.log('hola desde agregarPresupuesto');
+   // console.log('hola desde agregarPresupuesto');
     const nombre = this.presupuestoForm.get('nombrePresupuesto')!.value;
     const cliente = this.presupuestoForm.get('cliente')!.value;
     const precio = this.totalFinalPrice;

@@ -102,6 +102,6 @@ export class CheckboxComponent {
     this.totalCostReceived = 0
 
 
-    console.log('agregarPresupuesto '+ this.totalFinalPrice)
+   // console.log('agregarPresupuesto '+ this.totalFinalPrice)
   }
 }

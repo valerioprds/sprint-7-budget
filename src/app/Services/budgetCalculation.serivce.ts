@@ -25,6 +25,7 @@ export class PresupuestoService {
 
     this.presupuestos.push(nuevoPresupuesto);
 
-
+console.log('desde el servicio ' + this.presupuestos)
   }
+
 }
