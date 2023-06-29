@@ -21,9 +21,9 @@ export class PanelComponent {
 
   ngOnInit(): void {
     this.webForm = this.fb.group({
-      numberOfPages: ['', Validators.required],
+      numberOfPages: ['' ],
       // los validators sirve para otro ejercicio despues?
-      numberOfLanguages: ['', Validators.required],
+      numberOfLanguages: [''],
     });
     this.webForm.valueChanges.subscribe(() => {
       this.onSubmit();
@@ -70,6 +70,8 @@ export class PanelComponent {
     );
     this.totalCostSent.emit(totalCost);
 
-    //console.log('hola desde onsubmit' + totalCost);
+    //console.log('hola desde onsubmit ' + totalCost);
+
+
   }
 }

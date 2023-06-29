@@ -20,18 +20,26 @@ export class CheckboxComponent {
   totalCostReceived: number = 0; // es del hijo
   totalFinalPrice: number = 0; // suma de padre + hijo  que se calcula en calculateTotalFinalPrice y lo llamamos en el HTML
 
-  //  *Ejercicio 6 para crear un array de presupuestos
 
   calculateTotalFinalPrice() {
     this.totalFinalPrice = this.totalCostReceived + this.totalPrice;
+    /*  this.totalFinalPrice = 0  */
+
+ /*     if (this.totalCostReceived !== 0) {
+      this.totalCostReceived = 0; // Resetting totalCostReceived to 0 if it is not already 0
+    } */
   }
+
+
 
   receiveTotalCost(totalCost: number) {
     this.totalCostReceived = totalCost;
-    //console.log('HE RECIBIDO ' + totalCost + ' ' + this.totalPrice);
+    //console.log('desde de receiveTotalCost '+ totalCost )
+    console.log('HE RECIBIDO ' + totalCost + ' ' + this.totalPrice);
     this.calculateTotalFinalPrice();
     //totalCost es de panel , this.totalPrice es del checkbox (las 3 casillas)
   }
+
 
   checkboxForm: FormGroup;
 
@@ -72,15 +80,16 @@ export class CheckboxComponent {
       this.totalPrice += 300;
     }
 
+
     if (formValue.checkedCampaingAdvertisement) {
       this.totalPrice += 200;
     }
 
-    //console.log(this.totalPrice);
+    console.log(' desde calculateTotalPrice ' + this.totalPrice);
   }
 
    agregarPresupuesto() {
-    console.log('hola desde agregarPresupuesto');
+    //console.log('hola desde agregarPresupuesto');
     const nombre = this.checkboxForm.get('nombrePresupuesto')!.value;
     const cliente = this.checkboxForm.get('cliente')!.value;
     const precio = this.totalFinalPrice;
@@ -88,5 +97,11 @@ export class CheckboxComponent {
     this.presupuestoService.agregarPresupuesto(nombre, cliente, precio);
 
     this.checkboxForm.reset();
+
+    this.totalFinalPrice = 0
+    this.totalCostReceived = 0
+
+
+    console.log('agregarPresupuesto '+ this.totalFinalPrice)
   }
 }

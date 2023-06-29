@@ -6,9 +6,8 @@ import { Injectable } from '@angular/core';
 export class BudgetCalculationService {
   calculateTotalCost(numberOfPages: number, numberOfLanguages: number): number {
     return numberOfPages * numberOfLanguages * 30;
+    
   }
-
-
 }
 
 export class PresupuestoService {
@@ -16,11 +15,7 @@ export class PresupuestoService {
 
   constructor() {}
 
-  agregarPresupuesto(
-    nombre: string,
-    cliente: string,
-    precio: number
-  ) {
+  agregarPresupuesto(nombre: string, cliente: string, precio: number) {
     const nuevoPresupuesto = {
       nombre: nombre,
       cliente: cliente,
