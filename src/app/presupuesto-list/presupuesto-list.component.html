@@ -1,9 +1,21 @@
 
 
-<div class="presupuesto-container" *ngFor="let presupuesto of presupuestoService.presupuestos"> <!-- lo tuve que poner public en el constructor porque sino error -->
+<div class="presupuesto-container" *ngFor="let presupuesto of presupuestoService.presupuestos" [class.ordenado]="orderByDate || orderByAlphabet"> <!-- lo tuve que poner public en el constructor porque sino error -->
   <p>Nombre: {{ presupuesto.nombre }}</p>
   <p>Cliente: {{ presupuesto.cliente }}</p>
-  <!-- <p>Servicio: {{ presupuesto.servicio }}</p> -->
+
   <p>Precio: {{ presupuesto.precio }}</p>
 </div>
+
+<div>
+  <button (click)="ordenarPorNombre()">Ordenar por nombre</button>
+  <button (click)="ordenarPorFecha()">Ordenar por fecha</button>
+</div>
+
+<!-- Agrega la clase 'ordenado' a los elementos ordenados -->
+<!-- <ul>
+  <li *ngFor="let presupuesto of presupuestoService.presupuestos" [class.ordenado]="orderByDate || orderByAlphabet">
+
+  </li>
+</ul> -->
 

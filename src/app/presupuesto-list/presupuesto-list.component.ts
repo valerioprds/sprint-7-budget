@@ -13,6 +13,10 @@ export class PresupuestoListComponent {
   presupuestoForm: FormGroup;
   totalFinalPrice!: number
 
+  orderByDate = false;
+  orderByAlphabet = false;
+
+
   constructor(
     public presupuestoService: PresupuestoService,
     private formBuilder: FormBuilder,
@@ -23,6 +27,38 @@ export class PresupuestoListComponent {
       cliente: ['', Validators.required],
     });
   }
+
+
+  ordenarPorNombre() {
+    this.presupuestoService.presupuestos.sort((a, b) => {
+      const nombreA = a.cliente.toLowerCase();
+      const nombreB = b.cliente.toLowerCase();
+      console.log('ordenarPorNombre ' + nombreA + nombreB )
+      if (nombreA < nombreB) {
+        return -1;
+      }
+      if (nombreA > nombreB) {
+        return 1;
+      }
+      return 0;
+
+    });
+    this.orderByDate = false;
+    this.orderByAlphabet = true;
+
+
+  }
+
+  ordenarPorFecha() {
+    this.presupuestoService.presupuestos.sort((a, b) => {
+      const fechaA = new Date(a.fecha);
+      const fechaB = new Date(b.fecha);
+      return fechaA.getTime() - fechaB.getTime();
+    });
+    this.orderByAlphabet = false;
+    this.orderByDate = true;
+  }
+
 
 
   agregarPresupuesto() {
