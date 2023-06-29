@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PresupuestoService } from '../Services/budgetCalculation.serivce';
 
@@ -7,30 +7,26 @@ import { PresupuestoService } from '../Services/budgetCalculation.serivce';
   templateUrl: './presupuesto-list.component.html',
   styleUrls: ['./presupuesto-list.component.css'],
 })
-export class PresupuestoListComponent  {
+export class PresupuestoListComponent {
+  presupuestos: any[] = []; // Array para almacenar los presupuestos
 
-  // Declaración del tipo y asignación del objeto
   presupuestoForm: FormGroup;
-  totalFinalPrice!: number
-
-  presupuestos : any[] = []
-
-
+  totalFinalPrice!: number;
   orderByDate = false;
   orderByAlphabet = false;
 
-
   constructor(
     public presupuestoService: PresupuestoService,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
   ) {
     // Creación del FormGroup utilizando formBuilder.group()
     this.presupuestoForm = this.formBuilder.group({
       nombrePresupuesto: ['', Validators.required],
       cliente: ['', Validators.required],
     });
-  }
 
+    this.presupuestos = this.presupuestoService.presupuestos;
+  }
 
   ordenarPorNombre() {
     this.presupuestoService.presupuestos.sort((a, b) => {
@@ -44,20 +40,24 @@ export class PresupuestoListComponent  {
         return 1;
       }
       return 0;
-
     });
     this.orderByDate = false;
     this.orderByAlphabet = true;
-
-
   }
 
+  ordenarPorFecha() {
+    this.presupuestoService.presupuestos.sort((a: any, b: any) => {
+      const fechaA = new Date(a.fecha);
+      const fechaB = new Date(b.fecha);
 
-
-
+      return fechaA.getTime() - fechaB.getTime();
+    });
+    this.orderByDate = true;
+    this.orderByAlphabet = false;
+  }
 
   agregarPresupuesto() {
-   // console.log('hola desde agregarPresupuesto');
+    // console.log('hola desde agregarPresupuesto');
     const nombre = this.presupuestoForm.get('nombrePresupuesto')!.value;
     const cliente = this.presupuestoForm.get('cliente')!.value;
     const precio = this.totalFinalPrice;
@@ -66,4 +66,5 @@ export class PresupuestoListComponent  {
 
     this.presupuestoForm.reset();
   }
+
 }
