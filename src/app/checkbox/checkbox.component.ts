@@ -85,7 +85,7 @@ export class CheckboxComponent {
       this.totalPrice += 200;
     }
 
-    console.log(' desde calculateTotalPrice ' + this.totalPrice);
+    //console.log(' desde calculateTotalPrice ' + this.totalPrice);
   }
 
    agregarPresupuesto() {

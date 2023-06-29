@@ -5,7 +5,9 @@
   <p>Cliente: {{ presupuesto.cliente }}</p>
 
   <p>Precio: {{ presupuesto.precio }}</p>
+  <p>Fecha de Creación: {{ presupuesto.fecha | date:'dd/MM/yyyy HH:mm:ss' }}</p>
 </div>
+
 
 <div>
   <button (click)="ordenarPorNombre()">Ordenar por nombre</button>

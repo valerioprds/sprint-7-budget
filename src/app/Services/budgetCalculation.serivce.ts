@@ -19,12 +19,12 @@ export class PresupuestoService {
     const nuevoPresupuesto = {
       nombre: nombre,
       cliente: cliente,
-
       precio: precio,
+      fecha: new Date()
     };
 
     this.presupuestos.push(nuevoPresupuesto);
 
-  
+
   }
 }

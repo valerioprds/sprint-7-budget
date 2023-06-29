@@ -7,7 +7,7 @@ import { PresupuestoService } from '../Services/budgetCalculation.serivce';
   templateUrl: './presupuesto-list.component.html',
   styleUrls: ['./presupuesto-list.component.css'],
 })
-export class PresupuestoListComponent {
+export class PresupuestoListComponent  {
 
   // Declaración del tipo y asignación del objeto
   presupuestoForm: FormGroup;
@@ -33,7 +33,7 @@ export class PresupuestoListComponent {
     this.presupuestoService.presupuestos.sort((a, b) => {
       const nombreA = a.cliente.toLowerCase();
       const nombreB = b.cliente.toLowerCase();
-      console.log('ordenarPorNombre ' + nombreA + nombreB )
+      //console.log('ordenarPorNombre ' + nombreA + nombreB )
       if (nombreA < nombreB) {
         return -1;
       }
@@ -53,6 +53,8 @@ export class PresupuestoListComponent {
     this.presupuestoService.presupuestos.sort((a, b) => {
       const fechaA = new Date(a.fecha);
       const fechaB = new Date(b.fecha);
+      console.log(fechaA)
+      console.log(fechaB)
       return fechaA.getTime() - fechaB.getTime();
     });
     this.orderByAlphabet = false;
