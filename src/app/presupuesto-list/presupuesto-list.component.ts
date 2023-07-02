@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PresupuestoService } from '../Services/budgetCalculation.serivce';
 
@@ -7,29 +7,24 @@ import { PresupuestoService } from '../Services/budgetCalculation.serivce';
   templateUrl: './presupuesto-list.component.html',
   styleUrls: ['./presupuesto-list.component.css'],
 })
-export class PresupuestoListComponent {
+export class PresupuestoListComponent implements OnInit {
   presupuestos: any[] = []; // Array para almacenar los presupuestos
 
-  presupuestoForm: FormGroup;
   totalFinalPrice!: number;
   orderByDate = false;
   orderByAlphabet = false;
 
-  constructor(
-    public presupuestoService: PresupuestoService,
-    private formBuilder: FormBuilder
-  ) {
-    // Creación del FormGroup utilizando formBuilder.group()
-    this.presupuestoForm = this.formBuilder.group({
-      nombrePresupuesto: ['', Validators.required],
-      cliente: ['', Validators.required],
-    });
+  constructor(public presupuestoService: PresupuestoService) {}
 
-    this.presupuestos = this.presupuestoService.presupuestos;
+  ngOnInit(): void {
+    //this.presupuestos = this.presupuestoService.presupuestos;
+    this.presupuestoService.budget$.subscribe(resp => {
+      this.presupuestos = [...resp]
+    })
   }
 
   ordenarPorNombre() {
-    this.presupuestoService.presupuestos.sort((a, b) => {
+    this.presupuestos = this.presupuestos.sort((a, b) => {
       const nombreA = a.cliente.toLowerCase();
       const nombreB = b.cliente.toLowerCase();
       //console.log('ordenarPorNombre ' + nombreA + nombreB )
@@ -46,25 +41,20 @@ export class PresupuestoListComponent {
   }
 
   ordenarPorFecha() {
-    this.presupuestoService.presupuestos.sort((a: any, b: any) => {
-      const fechaA = new Date(a.fecha);
-      const fechaB = new Date(b.fecha);
-
-      return fechaA.getTime() - fechaB.getTime();
+    this.presupuestos = this.presupuestos.sort((a: any, b: any) => {
+      return +new Date(b.fecha) - +new Date(a.fecha);
     });
+
     this.orderByDate = true;
     this.orderByAlphabet = false;
   }
 
-  agregarPresupuesto() {
-    // console.log('hola desde agregarPresupuesto');
-    const nombre = this.presupuestoForm.get('nombrePresupuesto')!.value;
-    const cliente = this.presupuestoForm.get('cliente')!.value;
-    const precio = this.totalFinalPrice;
-
-    this.presupuestoService.agregarPresupuesto(nombre, cliente, precio);
-
-    this.presupuestoForm.reset();
+  setIncialOrder(): void {
+    //set nunca retorna sole setea
+    this.presupuestos = [...this.presupuestoService.presupuestos];
+    console.log('__presupuestos', this.presupuestos);
+    console.log('__servicio', this.presupuestoService.presupuestos);
+    this.orderByDate = false;
+    this.orderByAlphabet = false;
   }
-
 }

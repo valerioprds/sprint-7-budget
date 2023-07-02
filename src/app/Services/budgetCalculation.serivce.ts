@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class BudgetCalculationService {
 
 export class PresupuestoService {
   presupuestos: any[] = []; // Array para almacenar los presupuestos
-
+  budget$:Subject<any> = new Subject<any>
   constructor() {}
 
   agregarPresupuesto(nombre: string, cliente: string, precio: number) {
@@ -24,6 +25,8 @@ export class PresupuestoService {
     };
 
     this.presupuestos.push(nuevoPresupuesto);
+
+    this.budget$.next(this.presupuestos)
 
 console.log('desde el servicio ' + this.presupuestos)
   }

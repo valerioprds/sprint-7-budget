@@ -1,6 +1,6 @@
 
 
-<div class="presupuesto-container" *ngFor="let presupuesto of presupuestoService.presupuestos" [class.ordenado]="orderByDate || orderByAlphabet"> <!-- lo tuve que poner public en el constructor porque sino error -->
+<div class="presupuesto-container" *ngFor="let presupuesto of presupuestos" [class.ordenado]="orderByDate || orderByAlphabet"> <!-- lo tuve que poner public en el constructor porque sino error -->
   <p>Nombre: {{ presupuesto.nombre }}</p>
   <p>Cliente: {{ presupuesto.cliente }}</p>
 
@@ -12,6 +12,7 @@
 <div>
   <button (click)="ordenarPorNombre()">Ordenar por nombre</button>
    <button (click)="ordenarPorFecha()">Ordenar por fecha</button>
+   <button (click)="setIncialOrder()">Resetear Orden</button>
 </div>
 
 
