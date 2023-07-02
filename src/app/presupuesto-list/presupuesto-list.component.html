@@ -16,3 +16,10 @@
 </div>
 
 
+<form [formGroup]="searchForm">
+  <input type="text" formControlName="searchText">
+  <button (click)="filterPresupuestos()">Buscar</button>
+</form>
+
+
+<!--  -->

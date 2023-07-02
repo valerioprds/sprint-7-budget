@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
 import { PresupuestoService } from '../Services/budgetCalculation.serivce';
 
 @Component({
@@ -9,18 +9,29 @@ import { PresupuestoService } from '../Services/budgetCalculation.serivce';
 })
 export class PresupuestoListComponent implements OnInit {
   presupuestos: any[] = []; // Array para almacenar los presupuestos
+  searchForm: FormGroup = new FormGroup({
+    searchText: new FormControl()
+  });
+    presupuestosFiltrados!: string[];
 
   totalFinalPrice!: number;
   orderByDate = false;
   orderByAlphabet = false;
 
-  constructor(public presupuestoService: PresupuestoService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private presupuestoService: PresupuestoService
+  ) {}
 
   ngOnInit(): void {
     //this.presupuestos = this.presupuestoService.presupuestos;
-    this.presupuestoService.budget$.subscribe(resp => {
-      this.presupuestos = [...resp]
-    })
+    this.presupuestoService.budget$.subscribe((resp) => {
+      this.presupuestos = [...resp];
+    });
+
+    this.searchForm.get('searchText')!.valueChanges.subscribe(() => {
+      this.filterPresupuestos();
+    });
   }
 
   ordenarPorNombre() {
@@ -56,5 +67,12 @@ export class PresupuestoListComponent implements OnInit {
     console.log('__servicio', this.presupuestoService.presupuestos);
     this.orderByDate = false;
     this.orderByAlphabet = false;
+  }
+
+  filterPresupuestos() {
+    const searchText = this.searchForm.get('searchText')!.value;
+    this.presupuestosFiltrados = this.presupuestos.filter((presupuesto) =>
+      presupuesto.toLowerCase().includes(searchText.toLowerCase())
+    );
   }
 }

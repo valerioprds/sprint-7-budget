@@ -22,7 +22,8 @@ import { PresupuestoListComponent } from './presupuesto-list/presupuesto-list.co
     PanelComponent,
     WelcomeComponent,
     ModalComponent,
-    PresupuestoListComponent
+    PresupuestoListComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,9 @@ import { PresupuestoListComponent } from './presupuesto-list/presupuesto-list.co
     FormsModule,
     ReactiveFormsModule,
   ],
+
+  bootstrap: [AppComponent],
   providers: [PresupuestoService],
-  bootstrap: [AppComponent]
+
 })
 export class AppModule { }
