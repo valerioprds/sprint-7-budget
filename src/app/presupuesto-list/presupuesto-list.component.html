@@ -1,25 +1,36 @@
+<div
+  class="presupuesto-container"
+  *ngFor="
+    let presupuesto of presupuestosFiltrados.length > 0
+      ? presupuestosFiltrados
+      : presupuestos
+  "
+  [class.ordenado]="orderByDate || orderByAlphabet"
+>
 
 
-<div class="presupuesto-container" *ngFor="let presupuesto of presupuestos" [class.ordenado]="orderByDate || orderByAlphabet"> <!-- lo tuve que poner public en el constructor porque sino error -->
+<input [(ngModel)]="searchTerm" type="text" placeholder="Buscar por nombre de presupuesto">
+<br> <br>
   <p>Nombre: {{ presupuesto.nombre }}</p>
   <p>Cliente: {{ presupuesto.cliente }}</p>
 
   <p>Precio: {{ presupuesto.precio }}</p>
-  <p>Fecha de Creación: {{ presupuesto.fecha | date:'dd/MM/yyyy HH:mm:ss' }}</p>
+  <p>
+    Fecha de Creación: {{ presupuesto.fecha | date : "dd/MM/yyyy HH:mm:ss" }}
+  </p>
 </div>
-
 
 <div>
   <button (click)="ordenarPorNombre()">Ordenar por nombre</button>
-   <button (click)="ordenarPorFecha()">Ordenar por fecha</button>
-   <button (click)="setIncialOrder()">Resetear Orden</button>
+  <button (click)="ordenarPorFecha()">Ordenar por fecha</button>
+  <button (click)="setIncialOrder()">Resetear Orden</button>
+  <button (click)="buscarPresupuestos()">Buscar</button>
 </div>
 
-
+<!--
 <form [formGroup]="searchForm">
   <input type="text" formControlName="searchText">
   <button (click)="filterPresupuestos()">Buscar</button>
-</form>
-
+</form> -->
 
 <!--  -->

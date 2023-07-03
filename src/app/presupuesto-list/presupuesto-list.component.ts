@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { PresupuestoService } from '../Services/budgetCalculation.serivce';
 
 @Component({
@@ -9,10 +14,8 @@ import { PresupuestoService } from '../Services/budgetCalculation.serivce';
 })
 export class PresupuestoListComponent implements OnInit {
   presupuestos: any[] = []; // Array para almacenar los presupuestos
-  searchForm: FormGroup = new FormGroup({
-    searchText: new FormControl()
-  });
-    presupuestosFiltrados!: string[];
+  presupuestosFiltrados: any[] = [];
+  searchTerm: string = '';
 
   totalFinalPrice!: number;
   orderByDate = false;
@@ -29,9 +32,7 @@ export class PresupuestoListComponent implements OnInit {
       this.presupuestos = [...resp];
     });
 
-    this.searchForm.get('searchText')!.valueChanges.subscribe(() => {
-      this.filterPresupuestos();
-    });
+    this.presupuestos = this.presupuestoService.getPresupuestos();
   }
 
   ordenarPorNombre() {
@@ -69,10 +70,17 @@ export class PresupuestoListComponent implements OnInit {
     this.orderByAlphabet = false;
   }
 
-  filterPresupuestos() {
-    const searchText = this.searchForm.get('searchText')!.value;
-    this.presupuestosFiltrados = this.presupuestos.filter((presupuesto) =>
-      presupuesto.toLowerCase().includes(searchText.toLowerCase())
-    );
+  buscarPresupuestos() {
+    console.log('___Presupuestos filtrados: ', this.presupuestosFiltrados);
+    if (this.searchTerm.trim() === '') {
+      this.presupuestosFiltrados = this.presupuestos;
+    } else {
+      this.presupuestosFiltrados = this.presupuestos.filter((presupuesto) =>
+        presupuesto.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+    if (this.presupuestosFiltrados.length === 0) {
+      alert('not found');
+    }
   }
 }
