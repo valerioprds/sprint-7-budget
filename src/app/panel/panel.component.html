@@ -1,12 +1,12 @@
 <form
   [formGroup]="webForm"
-  class="panel rounded"
+  class="panel rounded  "
   id="panel-id"
-  style="border: 3px solid blue"
+
 >
-<div class="container my-2">
+<div class="inputs-containers container shadow rounded "  >
   <div class="row">
-    <div class="col d-flex justify-content-center align-items-center">
+    <div class="col mt-2 d-flex justify-content-center align-items-center">
       <div class="form-group">
         <label for="number-pages">Numero de Paginas</label>
         <div class="input-group">
@@ -40,22 +40,21 @@
 
     </div>
   </div>
-  <br />
-  <br />
+
   <div class="row">
-    <div class="col d-flex justify-content-center align-items-center">
-      <div class="form-group">
+    <div class="col mb-2 d-flex justify-content-center align-items-center ">
+      <div class="form-group ">
         <label for="number-languages">Numero de Lenguas</label>
         <div class="input-group">
           <button
             type="button"
-            class=" rounded btn btn-warning"
+            class=" rounded  btn btn-warning"
             (click)=" reduceQuantityofLanguages()"
           >
             -
           </button>
           <input
-            class="form-control"
+            class="form-control "
             type="number"
             placeholder="introduce numero de Lenguas"
             formControlName="numberOfLanguages"
@@ -63,12 +62,12 @@
           />
           <button
             type="button"
-            class=" rounded btn btn-success"
+            class=" rounded  btn btn-success"
             (click)="increaseQuantityofLanguages()"
           >
             +
           </button>
-          <app-modal></app-modal>
+          <app-modal ></app-modal>
         </div>
       </div>
 
