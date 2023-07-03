@@ -1,6 +1,10 @@
+
+
 <form [formGroup]="checkboxForm">
+
   <div class="main-content">
-    <p>¿Qué quieres hacer?</p>
+    <a class="atras" (click)="goBackHome()">Volver Atrás</a>
+    <h2 class="mb-3 text-center">¿Qué quieres hacer?</h2>
     <ul class="list-unstyled">
       <li>
         <label for="webPage">
@@ -74,15 +78,11 @@
       </button>
     </div>
 
-
     <br />
     <br />
-    <button class="btn btn-primary" (click)="goBackHome()">Volver Atrás</button>
   </div>
   <aside class="sidebar">
     <p id="totalPrice">El Precio Total es: {{ totalFinalPrice }} €</p>
     <br /><app-presupuesto-list></app-presupuesto-list>
-
   </aside>
-
 </form>

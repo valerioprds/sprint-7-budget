@@ -4,53 +4,76 @@
   id="panel-id"
   style="border: 3px solid blue"
 >
-  <label for="number-pages">Numero de Paginas</label> <br />
-  <button
-    type="button"
-    class="btn btn-warning"
-    (click)="reduceQuantityofPages()"
-  >
-    -
-  </button>
+<div class="container my-2">
+  <div class="row">
+    <div class="col d-flex justify-content-center align-items-center">
+      <div class="form-group">
+        <label for="number-pages">Numero de Paginas</label>
+        <div class="input-group">
+          <button
+            type="button"
+            class=" rounded btn btn-warning"
+            (click)="reduceQuantityofPages()"
+          >
+            -
+          </button>
+          <input
+            class="form-control"
+            type="number"
+            placeholder="numero de paginas"
+            formControlName="numberOfPages"
+            id="number-pages"
+          />
+          <button
+            type="button"
+            class=" rounded btn btn-success"
+            (click)="increaseQuantityofPages()"
+          >
+            +
+          </button>
 
-  <input
-    class="ms-3"
-    type="number"
-    placeholder="numero de paginas"
-    formControlName="numberOfPages"
-  />
-  <button
-    type="button"
-    class="btn btn-success ms-3"
-    (click)="increaseQuantityofPages()"
-  >
-    +</button
-  ><app-modal></app-modal>
+            <app-modal></app-modal>
 
+        </div>
+
+      </div>
+
+    </div>
+  </div>
   <br />
   <br />
+  <div class="row">
+    <div class="col d-flex justify-content-center align-items-center">
+      <div class="form-group">
+        <label for="number-languages">Numero de Lenguas</label>
+        <div class="input-group">
+          <button
+            type="button"
+            class=" rounded btn btn-warning"
+            (click)=" reduceQuantityofLanguages()"
+          >
+            -
+          </button>
+          <input
+            class="form-control"
+            type="number"
+            placeholder="introduce numero de Lenguas"
+            formControlName="numberOfLanguages"
+            id="number-languages"
+          />
+          <button
+            type="button"
+            class=" rounded btn btn-success"
+            (click)="increaseQuantityofLanguages()"
+          >
+            +
+          </button>
+          <app-modal></app-modal>
+        </div>
+      </div>
 
-  <label for="number-languages">Numero de Lenguas</label>
-  <br />
-  <button
-    type="button"
-    class="btn btn-warning"
-    (click)="reduceQuantityofLanguages()"
-  >
-    -
-  </button>
-  <input
-    class="ms-3"
-    type="number"
-    placeholder="introduce numero de Lenguas"
-    formControlName="numberOfLanguages"
-  />
-  <button
-    type="button"
-    class="btn btn-success ms-3"
-    (click)="increaseQuantityofLanguages()"
-  >
-    +
-  </button>
-  <app-modal><i class="fa-solid fa-circle-info"></i></app-modal>
+    </div>
+  </div>
+</div>
+
 </form>
