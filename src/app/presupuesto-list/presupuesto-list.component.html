@@ -35,13 +35,13 @@
 >
   <div class="presupuesto-list">
     <ul class="list-unstyled">
-      <li> <b>Nombre Presupuesto:</b> {{ presupuesto.nombre }}</li>
-      <li><b>Cliente:</b>  {{ presupuesto.cliente }}</li>
-      <li> <b>Precio:</b>   {{ presupuesto.precio }}</li>
+      <li> <b>Nombre Presupuesto:</b> {{ presupuesto.name }}</li>
+      <li><b>Cliente:</b>  {{ presupuesto.customer }}</li>
+      <li> <b>Precio:</b>   {{ presupuesto.price }}</li>
       <li>
         <b>Fecha de Creación:</b>
 
-        {{ presupuesto.fecha | date : "dd/MM/yyyy HH:mm:ss" }}
+        {{ presupuesto.date | date : "dd/MM/yyyy HH:mm:ss" }}
       </li>
     </ul>
   </div>

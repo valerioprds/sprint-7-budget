@@ -37,8 +37,8 @@ export class PresupuestoListComponent implements OnInit {
 
   ordenarPorNombre() {
     this.presupuestos = this.presupuestos.sort((a, b) => {
-      const nombreA = a.cliente.toLowerCase();
-      const nombreB = b.cliente.toLowerCase();
+      const nombreA = a.customer.toLowerCase();
+      const nombreB = b.customer.toLowerCase();
       //console.log('ordenarPorNombre ' + nombreA + nombreB )
       if (nombreA < nombreB) {
         return -1;
@@ -54,7 +54,7 @@ export class PresupuestoListComponent implements OnInit {
 
   ordenarPorFecha() {
     this.presupuestos = this.presupuestos.sort((a: any, b: any) => {
-      return +new Date(b.fecha) - +new Date(a.fecha);
+      return +new Date(b.date) - +new Date(a.date);
     });
 
     this.orderByDate = true;
@@ -76,7 +76,7 @@ export class PresupuestoListComponent implements OnInit {
       this.presupuestosFiltrados = this.presupuestos;
     } else {
       this.presupuestosFiltrados = this.presupuestos.filter((presupuesto) =>
-        presupuesto.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
+        presupuesto.name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
     if (this.presupuestosFiltrados.length === 0) {
