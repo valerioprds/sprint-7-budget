@@ -46,21 +46,21 @@
     <!-- inicio de inputs  -->
     <div class="details-section">
       <div>
-        <label for="nombrePresupuesto">Nombre de presupuesto:</label>
+        <label for="budgetName">Nombre de presupuesto:</label>
         <input
           type="text"
-          id="nombrePresupuesto"
-          formControlName="nombrePresupuesto"
+          id="budgetName"
+          formControlName="budgetName"
           class="form-control"
         />
       </div>
 
       <div>
-        <label for="cliente">Cliente:</label>
+        <label for="customer">Cliente:</label>
         <input
           type="text"
-          id="cliente"
-          formControlName="cliente"
+          id="customer"
+          formControlName="customer"
           class="form-control"
         />
       </div>
@@ -72,7 +72,7 @@
         class="btn btn-primary"
         type="submit"
         [disabled]="checkboxForm.invalid"
-        (click)="agregarPresupuesto()"
+        (click)="addBudget()"
       >
         Guardar
       </button>

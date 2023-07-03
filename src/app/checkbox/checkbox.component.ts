@@ -52,8 +52,8 @@ export class CheckboxComponent {
       checkedWebPage: false,
       checkedCampaingSeo: false,
       checkedCampaingAdvertisement: false,
-      nombrePresupuesto: ['', Validators.required],
-      cliente: ['', Validators.required],
+      budgetName: ['', Validators.required],
+      customer: ['', Validators.required],
     });
   }
 
@@ -88,13 +88,13 @@ export class CheckboxComponent {
     //console.log(' desde calculateTotalPrice ' + this.totalPrice);
   }
 
-   agregarPresupuesto() {
+   addBudget() {
     //console.log('hola desde agregarPresupuesto');
-    const nombre = this.checkboxForm.get('nombrePresupuesto')!.value;
-    const cliente = this.checkboxForm.get('cliente')!.value;
-    const precio = this.totalFinalPrice;
+    const name = this.checkboxForm.get('budgetName')!.value;
+    const customer = this.checkboxForm.get('customer')!.value;
+    const price = this.totalFinalPrice;
 
-    this.presupuestoService.agregarPresupuesto(nombre, cliente, precio);
+    this.presupuestoService.agregarPresupuesto(name, customer, price);
 
     this.checkboxForm.reset();
 
