@@ -1,3 +1,30 @@
+<div class="container">
+  <input
+    [(ngModel)]="searchTerm"
+    type="text"
+    placeholder="Buscar por nombre de presupuesto"
+    class="form-control"
+  />
+  <div class="row mt-5">
+    <div class="col">
+      <div class="d-grid gap-2">
+        <button class="btn btn-outline-dark" (click)="ordenarPorNombre()">
+          Ordenar por Cliente
+        </button>
+        <button class="btn btn-outline-dark" (click)="ordenarPorFecha()">
+          Ordenar por Fecha
+        </button>
+        <button class="btn btn-outline-dark" (click)="setIncialOrder()">
+          Resetear Orden
+        </button>
+        <button class="btn btn-outline-dark" (click)="buscarPresupuestos()">
+          Buscar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div
   class="presupuesto-container"
   *ngFor="
@@ -5,32 +32,17 @@
       ? presupuestosFiltrados
       : presupuestos
   "
-  [class.ordenado]="orderByDate || orderByAlphabet"
 >
+  <div class="presupuesto-list">
+    <ul class="list-unstyled">
+      <li> <b>Nombre Presupuesto:</b> {{ presupuesto.nombre }}</li>
+      <li><b>Cliente:</b>  {{ presupuesto.cliente }}</li>
+      <li> <b>Precio:</b>   {{ presupuesto.precio }}</li>
+      <li>
+        <b>Fecha de Creación:</b>
 
-
-<input [(ngModel)]="searchTerm" type="text" placeholder="Buscar por nombre de presupuesto">
-<br> <br>
-  <p>Nombre: {{ presupuesto.nombre }}</p>
-  <p>Cliente: {{ presupuesto.cliente }}</p>
-
-  <p>Precio: {{ presupuesto.precio }}</p>
-  <p>
-    Fecha de Creación: {{ presupuesto.fecha | date : "dd/MM/yyyy HH:mm:ss" }}
-  </p>
+        {{ presupuesto.fecha | date : "dd/MM/yyyy HH:mm:ss" }}
+      </li>
+    </ul>
+  </div>
 </div>
-
-<div>
-  <button (click)="ordenarPorNombre()">Ordenar por nombre</button>
-  <button (click)="ordenarPorFecha()">Ordenar por fecha</button>
-  <button (click)="setIncialOrder()">Resetear Orden</button>
-  <button (click)="buscarPresupuestos()">Buscar</button>
-</div>
-
-<!--
-<form [formGroup]="searchForm">
-  <input type="text" formControlName="searchText">
-  <button (click)="filterPresupuestos()">Buscar</button>
-</form> -->
-
-<!--  -->
