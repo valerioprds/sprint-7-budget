@@ -16,19 +16,19 @@ export class PresupuestoService {
   budget$:Subject<any> = new Subject<any>
   constructor() {}
 
-  agregarPresupuesto(nombre: string, cliente: string, precio: number) {
+  addBudget(name: string, customer: string, price: number) {
     const nuevoPresupuesto = {
-      nombre: nombre,
-      cliente: cliente,
-      precio: precio,
-      fecha: new Date()
+      name: name,
+      customer: customer,
+      price: price,
+      date: new Date()
     };
 
     this.presupuestos.push(nuevoPresupuesto);
 
     this.budget$.next(this.presupuestos)
 
-console.log('desde el servicio ' + this.presupuestos)
+//console.log('desde el servicio ' + this.budgets)
   }
 
   getPresupuestos() {

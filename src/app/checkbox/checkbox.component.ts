@@ -94,7 +94,7 @@ export class CheckboxComponent {
     const customer = this.checkboxForm.get('customer')!.value;
     const price = this.totalFinalPrice;
 
-    this.presupuestoService.agregarPresupuesto(name, customer, price);
+    this.presupuestoService.addBudget(name, customer, price);
 
     this.checkboxForm.reset();
 
