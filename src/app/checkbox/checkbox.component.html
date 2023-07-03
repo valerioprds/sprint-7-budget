@@ -47,23 +47,33 @@
           type="text"
           id="nombrePresupuesto"
           formControlName="nombrePresupuesto"
+          class="form-control"
         />
       </div>
 
       <div>
         <label for="cliente">Cliente:</label>
-        <input type="text" id="cliente" formControlName="cliente" />
+        <input
+          type="text"
+          id="cliente"
+          formControlName="cliente"
+          class="form-control"
+        />
       </div>
     </div>
     <br />
     <!-- acaban los imputs -->
-    <button
-      type="submit"
-      [disabled]="checkboxForm.invalid"
-      (click)="agregarPresupuesto()"
-    >
-      Guardar
-    </button>
+    <div class="d-flex justify-content-center align-items-center">
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="checkboxForm.invalid"
+        (click)="agregarPresupuesto()"
+      >
+        Guardar
+      </button>
+    </div>
+
 
     <br />
     <br />
@@ -72,7 +82,7 @@
   <aside class="sidebar">
     <p id="totalPrice">El Precio Total es: {{ totalFinalPrice }} €</p>
     <br /><app-presupuesto-list></app-presupuesto-list>
-    <!-- ñkkhv -->
+
   </aside>
-<!-- comentario de prueba -->
+
 </form>
