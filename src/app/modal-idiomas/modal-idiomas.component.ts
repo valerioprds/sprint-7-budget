@@ -2,12 +2,12 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
+  selector: 'app-modal-idiomas',
+  templateUrl: './modal-idiomas.component.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./modal.component.css'],
+  styleUrls: ['./modal-idiomas.component.css'],
 })
-export class ModalComponent {
+export class ModalIdiomasComponent {
   constructor(public modal: NgbModal) {}
 
   open(contenido: any) {
@@ -17,9 +17,6 @@ export class ModalComponent {
   openIdiomas(contenidoIdiomas: any) {
     this.modal.open(contenidoIdiomas);
   }
-
-
-
 
   openBackground(contenido: any) {
     this.modal.open(contenido, { backdropClass: 'background-modal' });

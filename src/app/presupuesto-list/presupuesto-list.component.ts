@@ -32,7 +32,7 @@ export class PresupuestoListComponent implements OnInit {
       this.presupuestos = [...resp];
     });
 
-    this.presupuestos = this.presupuestoService.getPresupuestos();
+   
   }
 
   ordenarPorNombre() {

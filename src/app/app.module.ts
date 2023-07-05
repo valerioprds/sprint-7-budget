@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ModalComponent } from './modal/modal.component';
 import { PresupuestoListComponent } from './presupuesto-list/presupuesto-list.component';
+import { ModalIdiomasComponent } from './modal-idiomas/modal-idiomas.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { PresupuestoListComponent } from './presupuesto-list/presupuesto-list.co
     WelcomeComponent,
     ModalComponent,
     PresupuestoListComponent,
+    ModalIdiomasComponent,
 
   ],
   imports: [
